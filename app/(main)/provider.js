@@ -1,13 +1,18 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import React from "react";
 import { AppSidebar } from "./_components/Sidebar";
+import Welcome from "./dashboard/_components/Welcome";
 
 function Provider({ children }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarTrigger />
-      <div>{children}</div>
+      {/**<SidebarTrigger />**/}
+
+      <div className="w-full mt-5 p-10">
+        <Welcome />
+        {children}
+      </div>
     </SidebarProvider>
   );
 }

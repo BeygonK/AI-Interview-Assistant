@@ -5,7 +5,7 @@ import React, { use, useContext, useEffect, useState } from "react";
 
 function Provider({ children }) {
   // usestate
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
 
   useEffect(() => {
     handleUserInsertion();
@@ -26,6 +26,7 @@ function Provider({ children }) {
 
       if (!user) {
         console.log("User not authenticated.");
+        setUser(null);
         return;
       }
 
@@ -52,20 +53,20 @@ function Provider({ children }) {
             },
           ])
           .select();
-        setUser(data);
 
         if (insertError) {
           console.error("Error inserting user:", insertError.message);
         } else {
-          console.log("User created:", data);
+          console.log("User created:", data[0]);
+          setUser(data[0]);
         }
       } else {
-        console.log("User already exists:", existingUser);
+        console.log("User already exists:", existingUser[0]);
+        setUser(existingUser[0]);
       }
     } catch (err) {
       console.error("Unexpected error:", err.message);
     }
-    setUser(user);
   };
 
   return (

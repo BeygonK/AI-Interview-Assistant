@@ -3,8 +3,10 @@ import Provider from "./provider";
 
 function Dashboardlayout({ children }) {
   return (
-    <div>
-      <Provider>{children}</Provider>
+    <div className="">
+      <Provider>
+        <div className="mt-10">{children}</div>
+      </Provider>
     </div>
   );
 }
