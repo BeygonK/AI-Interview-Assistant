@@ -13,7 +13,7 @@ import { InterviewerType } from "@/services/Constants";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-function FormContainer({ onHandleInputChange }) {
+function FormContainer({ onHandleInputChange, goNext }) {
   // Handle change for button
   const [data, setData] = useState([]);
 
@@ -89,7 +89,10 @@ function FormContainer({ onHandleInputChange }) {
           ))}
         </div>
       </div>
-      <div className="p-5 my-[-18px] flex justify-end ">
+      <div
+        className="p-5 my-[-18px] flex justify-end "
+        onClick={() => goNext()}
+      >
         <Button className={"cursor-pointer"}>
           Generate Questions
           <ArrowRight />

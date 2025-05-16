@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import FormContainer from "./_components/FormContainer";
+import GenerateQuiz from "./_components/GenerateQuiz";
+import { toast } from "sonner";
 
 function Create() {
   const router = useRouter();
@@ -17,6 +19,21 @@ function Create() {
     }));
   };
   console.log(interviewData);
+  const onGoNext = () => {
+    if (
+      !interviewData?.position ||
+      !interviewData?.description ||
+      !interviewData?.duration ||
+      !interviewData?.interviewType
+    ) {
+      toast.error(
+        "Please fill all the fields before proceeding to the next step"
+      );
+      return;
+    }
+    setStep(step + 1);
+  };
+
   return (
     <div className="mt-5 px-10 md:px-20 lg:px-32">
       <div className="flex gap-5 items-center">
@@ -27,7 +44,14 @@ function Create() {
         <h1 className="text-2xl font-bold">Create a new interview</h1>
       </div>
       <Progress value={step * 33.333} className={"my-5"} />
-      <FormContainer onHandleInputChange={onHandleInputChange} />
+      {step == 1 ? (
+        <FormContainer
+          onHandleInputChange={onHandleInputChange}
+          goNext={() => onGoNext()}
+        />
+      ) : step == 2 ? (
+        <GenerateQuiz interviewData={interviewData} />
+      ) : null}
     </div>
   );
 }
