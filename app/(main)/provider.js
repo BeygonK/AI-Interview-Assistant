@@ -9,7 +9,7 @@ function Provider({ children }) {
       <AppSidebar />
       {/**<SidebarTrigger />**/}
 
-      <div className="w-full mt-5 p-10">
+      <div className="w-full mt-5 p-10 bg-gray-100">
         <Welcome />
         {children}
       </div>

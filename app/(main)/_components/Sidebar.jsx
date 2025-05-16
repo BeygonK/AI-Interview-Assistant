@@ -13,9 +13,10 @@ import {
 import { SideBarData } from "@/services/Constants";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function AppSidebar() {
+  const router = useRouter();
   const path = usePathname();
 
   return (
@@ -25,9 +26,14 @@ export function AppSidebar() {
         <h1 className="mt-5 text-2xl font-bold text-green-600">
           AI Interviewer
         </h1>
-        <Button className="w-full mt-4 flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white">
+        <Button className="w-full mt-4 flex items-center space-x-2 bg-green-500 cursor-pointer hover:bg-green-600 text-white">
           <Plus className="w-5 h-5" />
-          <span>Create New Interview</span>
+          <Link
+            href="/dashboard/create-new-interview"
+            className="flex items-center space-x-2 cursor-pointer text-white"
+          >
+            Create New Interview
+          </Link>
         </Button>
       </SidebarHeader>
 

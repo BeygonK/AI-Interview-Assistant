@@ -1,10 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Video } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function LatestList() {
   const [interviews, setInterviews] = useState([]);
+  //const router = useRouter(); I decided to use Link instead of router.push for better SEO and accessibility.
   return (
     <div className="mt-6">
       <h1 className="font-bold text-2xl">Previous Interviews</h1>
@@ -14,7 +17,12 @@ function LatestList() {
             <Video className="h-10 w-10 text-primary" />
             <p className="text-gray-500">No interviews yet.</p>
             <Button className={"mt-5 cursor-pointer"}>
-              Create New Interview
+              <Link
+                href="/dashboard/create-new-interview"
+                className="flex items-center space-x-2 cursor-pointer text-white"
+              >
+                Create New Interview
+              </Link>
             </Button>
           </div>
         ) : (
