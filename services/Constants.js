@@ -33,3 +33,22 @@ export const SideBarData = [
     path: "/settings",
   },
 ];
+
+export const InterviewerType = [
+  {
+    title: "Technical",
+    icon: "👨‍💻",
+  },
+  {
+    title: "Behavioral",
+    icon: "🗣️",
+  },
+  {
+    title: "Experience",
+    icon: "👔",
+  },
+  {
+    title: "Problem Solving",
+    icon: "🧩",
+  },
+];
