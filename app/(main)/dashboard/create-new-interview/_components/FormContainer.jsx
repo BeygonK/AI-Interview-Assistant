@@ -17,6 +17,7 @@ function FormContainer({ onHandleInputChange, goNext }) {
   // Handle change for button
   const [data, setData] = useState([]);
 
+  //
   // when  interview type is selected, it will be added to the data array
   useEffect(() => {
     if (data.length > 0) {
