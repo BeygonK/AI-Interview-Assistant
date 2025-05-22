@@ -9,7 +9,7 @@ import { UserData } from "@/context/UserData";
 import { v4 as uuidv4 } from "uuid";
 import { UserContext } from "@/app/provider";
 
-function GenerateQuiz({ interviewData }) {
+function GenerateQuiz({ interviewData, onCreateLink }) {
   const [loading, setLoading] = React.useState(true);
   const [quiz, setQuiz] = React.useState(null);
   const [saving, setSaving] = React.useState(false);
@@ -92,6 +92,8 @@ function GenerateQuiz({ interviewData }) {
     console.log("Inserted data:", data);
     toast.success("Interview data saved successfully");
     setSaving(false);
+
+    onCreateLink(interviewId);
   };
 
   return (

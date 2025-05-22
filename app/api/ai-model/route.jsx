@@ -4,17 +4,20 @@ import OpenAI from "openai";
 
 export async function POST(request) {
   //
-  const { jobDescription, interviewType, position, duration } =
+  const { description, interviewType, position, duration } =
     await request.json();
+  console.log("Received data:", {
+    description,
+    interviewType,
+    position,
+    duration,
+  });
 
-  const FINAL_PROMPT = QUIZ_PROMPT.replace(
-    "{{job description}}",
-    jobDescription
-  )
+  const FINAL_PROMPT = QUIZ_PROMPT.replace("{{job description}}", description)
     .replace("{{interview type}}", interviewType)
     .replace("{{job title}}", position)
     .replace("{{interview duration}}", duration);
-  console.log("Final Prompt:", FINAL_PROMPT);
+  //console.log("Final Prompt:", FINAL_PROMPT);
 
   try {
     const openai = new OpenAI({

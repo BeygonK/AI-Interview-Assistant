@@ -6,11 +6,14 @@ import { Progress } from "@/components/ui/progress";
 import FormContainer from "./_components/FormContainer";
 import GenerateQuiz from "./_components/GenerateQuiz";
 import { toast } from "sonner";
+import { Inter } from "next/font/google";
+import InterviewLink from "./_components/InterviewLink";
 
 function Create() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const [interviewData, setInterviewData] = useState();
+  const [interview_id, setInterviewId] = useState(null);
 
   const onHandleInputChange = (field, value) => {
     setInterviewData((prev) => ({
@@ -34,6 +37,11 @@ function Create() {
     setStep(step + 1);
   };
 
+  const onCreateLink = (interview_id) => {
+    setInterviewId(interview_id);
+    setStep(step + 1);
+  };
+
   return (
     <div className="mt-5 px-10 md:px-20 lg:px-32">
       <div className="flex gap-5 items-center">
@@ -50,7 +58,15 @@ function Create() {
           goNext={() => onGoNext()}
         />
       ) : step == 2 ? (
-        <GenerateQuiz interviewData={interviewData} />
+        <GenerateQuiz
+          interviewData={interviewData}
+          onCreateLink={() => onCreateLink(interview_id)}
+        />
+      ) : step == 3 ? (
+        <InterviewLink
+          interview_id={interview_id}
+          interviewData={interviewData}
+        />
       ) : null}
     </div>
   );
