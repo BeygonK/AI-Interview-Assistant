@@ -11,7 +11,7 @@ import InterviewLink from "./_components/InterviewLink";
 
 function Create() {
   const router = useRouter();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [interviewData, setInterviewData] = useState();
   const [interview_id, setInterviewId] = useState(null);
 
@@ -38,6 +38,7 @@ function Create() {
   };
 
   const onCreateLink = (interview_id) => {
+    console.log("Creating interview link with ID:", interview_id);
     setInterviewId(interview_id);
     setStep(step + 1);
   };
@@ -60,7 +61,7 @@ function Create() {
       ) : step == 2 ? (
         <GenerateQuiz
           interviewData={interviewData}
-          onCreateLink={() => onCreateLink(interview_id)}
+          onCreateLink={onCreateLink}
         />
       ) : step == 3 ? (
         <InterviewLink

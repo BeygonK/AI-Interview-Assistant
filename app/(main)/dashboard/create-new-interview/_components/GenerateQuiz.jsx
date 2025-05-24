@@ -70,7 +70,8 @@ function GenerateQuiz({ interviewData, onCreateLink }) {
   const onFinish = async () => {
     // generate unique uuid
     setSaving(true);
-    const interviewId = uuidv4();
+    const interview_id = uuidv4();
+    console.log("Interview ID:", interview_id);
     const { data, error } = await supabase
       .from("Interview")
       .insert([
@@ -80,7 +81,7 @@ function GenerateQuiz({ interviewData, onCreateLink }) {
           duration: interviewData.duration,
           type: interviewData.interviewType,
           userEmail: user?.email,
-          interviewId,
+          interviewId: interview_id,
           questionList: quiz,
         },
       ])
@@ -93,7 +94,7 @@ function GenerateQuiz({ interviewData, onCreateLink }) {
     toast.success("Interview data saved successfully");
     setSaving(false);
 
-    onCreateLink(interviewId);
+    onCreateLink(interview_id);
   };
 
   return (
