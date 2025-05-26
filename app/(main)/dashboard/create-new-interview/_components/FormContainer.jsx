@@ -58,11 +58,12 @@ function FormContainer({ onHandleInputChange, goNext }) {
           onValueChange={(value) => onHandleInputChange("duration", value)}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="30 mins" />
+            <SelectValue placeholder="Enter duration" />
           </SelectTrigger>
           <SelectContent>
+            <SelectItem value="15">15 mins</SelectItem>
+            <SelectItem value="20">20 mins</SelectItem>
             <SelectItem value="30">30 mins</SelectItem>
-            <SelectItem value="40">40 mins</SelectItem>
             <SelectItem value="60">60 mins</SelectItem>
           </SelectContent>
         </Select>

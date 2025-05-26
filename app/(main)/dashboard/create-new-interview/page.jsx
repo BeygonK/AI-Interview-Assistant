@@ -21,7 +21,7 @@ function Create() {
       [field]: value,
     }));
   };
-  console.log(interviewData);
+  //console.log(interviewData);
   const onGoNext = () => {
     if (
       !interviewData?.position ||
@@ -38,7 +38,7 @@ function Create() {
   };
 
   const onCreateLink = (interview_id) => {
-    console.log("Creating interview link with ID:", interview_id);
+    //console.log("Creating interview link with ID:", interview_id);
     setInterviewId(interview_id);
     setStep(step + 1);
   };
